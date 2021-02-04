@@ -171,11 +171,6 @@ export class AdvancedComponent implements OnDestroy {
     placeholder: helptext_system_advanced.consolemsg_placeholder,
     tooltip: helptext_system_advanced.consolemsg_tooltip
   }, {
-    type: 'textarea',
-    name: 'motd',
-    placeholder: helptext_system_advanced.motd_placeholder,
-    tooltip: helptext_system_advanced.motd_tooltip
-  }, {
     type: 'checkbox',
     name: 'traceback',
     placeholder: helptext_system_advanced.traceback_placeholder,

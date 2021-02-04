@@ -57,7 +57,6 @@ export class NavigationService {
         { name: T('Boot'), state: 'boot' },
         { name: T('Advanced'), state: 'advanced' },
         { name: T('View Enclosure'), state: 'viewenclosure', disabled: true},
-        { name: T('Email'), state: 'email'},
         { name: T('System Dataset'), state: 'dataset'},
         { name: T('Reporting'), state: 'reporting'},
         { name: T('Alert Services'), state: 'alertservice' },
@@ -68,10 +67,8 @@ export class NavigationService {
         { name: T('Tunables'), state: 'tunable' },
         { name: T('Update'), state: 'update' },
         { name: T('CAs'), state: 'ca' },
-        { name: T('Certificates'), state: 'certificates' },
         { name: T('ACME DNS'), state: 'acmedns' },
         { name: T('Failover'), state: 'failover', disabled: true },
-        { name: T('Support'), state: 'support' },
       ]
     },
     {
@@ -221,13 +218,13 @@ export class NavigationService {
       icon: 'console-line',
       state: 'shell'
     },
-    {
-      name: T('Guide'),
-      type: 'extLink',
-      tooltip: T('Guide'),
-      icon: 'info',
-      state: '',
-    }
+    // {
+    //   name: T('Guide'),
+    //   type: 'extLink',
+    //   tooltip: T('Guide'),
+    //   icon: 'info',
+    //   state: '',
+    // }
   ]
 
   // Icon menu TITLE at the very top of navigation.

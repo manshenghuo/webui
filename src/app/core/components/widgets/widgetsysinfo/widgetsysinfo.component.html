@@ -23,18 +23,11 @@
             </button>
 
             <div class="platform-logo-wrapper" fxFlex="20">
-                <img *ngIf="isFN" class="platform-logo" src="assets/images/light-logo-full.svg">
-                <img *ngIf="!isFN" class="platform-logo" src="assets/images/TrueNAS_Logo_Full_White.svg">
               </div>
 
             <div class="content-left" [fxFlex.xs]="!isFN && product_image == 'X10'? 80 : 60" fxFlex.gt-xs="60"  fxLayout="column" fxLayoutAlign="center center">
 
               <div class="product-image {{!isFN ? 'truenas' : 'freenas'}} {{product_image == 'ix-original.svg' ? 'ix-logo' : ''}}">
-                <img *ngIf="product_image; else generic" [src]="'assets/images/' + product_image" id="{{product_model}}">
-                  <ng-template #generic>
-                    <mat-icon *ngIf="isFN && !certified" class="generic" svgIcon="freenas_logomark"></mat-icon>
-                    <mat-icon *ngIf="isFN && certified" class="generic certified" svgIcon="freenas_certified"></mat-icon>
-                  </ng-template>
                   <div class="generic alert" *ngIf="!product_image && isPassive && ha_status !== 'HA Enabled'">
                     <mat-icon role="img" fontSet="mdi-set" fontIcon="mdi-alert"></mat-icon>
                   </div>
@@ -70,8 +63,7 @@
               <div fxHide.xs class="list-subheader">Overview</div>
           
               <mat-list>
-                <mat-list-item><strong>{{'Platform' | translate}}:</strong> &nbsp;&nbsp;{{data.system_product && manufacturer == 'ixsystems' ? data.system_product : 'Generic'}}</mat-list-item>
-                <mat-list-item><strong>{{"Version" | translate}}:</strong> &nbsp;&nbsp;{{data.version}}</mat-list-item>
+                <mat-list-item><strong>{{'Platform' | translate}}:</strong> &nbsp;&nbsp;{{data.system_product && manufacturer == 'ixsystems' ? 'generic' : 'Generic'}}</mat-list-item>
   
                 <mat-list-item *ngIf="data.license">
                   <strong>{{'License' | translate}}:</strong> &nbsp;&nbsp;
@@ -83,7 +75,6 @@
                   <span><strong>{{"Serial Number" | translate}}:</strong>&nbsp;&nbsp;{{ data.system_serial}}</span>
                 </mat-list-item>
               
-                <mat-list-item><strong>{{"HostName" | translate}}:</strong> &nbsp;&nbsp;{{data.hostname}}</mat-list-item>
                 <mat-list-item><strong>{{"Uptime" | translate}}:</strong> &nbsp;&nbsp;{{data.uptime}}</mat-list-item>
   
               </mat-list>

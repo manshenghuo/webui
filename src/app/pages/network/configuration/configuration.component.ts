@@ -24,12 +24,6 @@ export class ConfigurationComponent implements OnDestroy{
   public fieldConfig: FieldConfig[] = [
     {
       type : 'input',
-      name : 'hostname',
-      placeholder : helptext.hostname_placeholder,
-      tooltip : helptext.hostname_tooltip,
-    },
-    {
-      type : 'input',
       name : 'hostname_b',
       placeholder : helptext.hostname_b_placeholder,
       tooltip : helptext.hostname_b_tooltip,

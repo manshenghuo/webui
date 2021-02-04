@@ -38,17 +38,6 @@ export class GeneralComponent {
       config:[
       {
         type: 'select',
-        name: 'ui_certificate',
-        placeholder: helptext.stg_guicertificate.placeholder,
-        tooltip: helptext.stg_guicertificate.tooltip,
-        options: [
-          { label: '---', value: null }
-        ],
-        required: true,
-        validation: helptext.stg_guicertificate.validation,
-      },
-      {
-        type: 'select',
         name: 'ui_address',
         multiple: true,
         placeholder: helptext.stg_guiaddress.placeholder,

@@ -242,7 +242,7 @@ export class TopbarComponent extends ViewControllerComponent implements OnInit, 
   }
 
   onShowAPI() {
-    window.open(window.location.origin + '/api/docs');
+    //window.open(window.location.origin + '/api/docs');
   }
 
   signOut() {
