@@ -27,17 +27,9 @@
 
             <div class="platform-logo-wrapper {{product_type.toLowerCase()}}" fxFlex="20">
                 <ng-container *ngIf="product_image || isPassive; else textOnly">
-                  <mat-icon *ngIf="retroLogo == 1" svgIcon="freenas_logo_full" class="retro" id="{{product_model}}"></mat-icon>
-                  <mat-icon *ngIf="retroLogo == 0 && product_type == 'CORE'" svgIcon="truenas_core_logo_full" id="{{product_model}}"></mat-icon>
-                  <mat-icon *ngIf="retroLogo == 0 && product_type == 'ENTERPRISE'" svgIcon="truenas_enterprise_logo_full" id="{{product_model}}"></mat-icon>
-                  <mat-icon *ngIf="retroLogo == 0 && product_type == 'SCALE' || product_type == 'SCALE_ENTERPRISE'" svgIcon="truenas_scale_logo_full" id="{{product_model}}"></mat-icon>
                 </ng-container>
 
                 <ng-template #textOnly>
-                  <mat-icon *ngIf="retroLogo == 1" svgIcon="freenas_logotype" class="retro" id="{{product_model}}"></mat-icon>
-                  <mat-icon *ngIf="retroLogo == 0 && product_type == 'CORE'" svgIcon="truenas_core_logotype" id="{{product_model}}"></mat-icon>
-                  <mat-icon *ngIf="retroLogo == 0 && product_type == 'ENTERPRISE'" svgIcon="truenas_enterprise_logotype" id="{{product_model}}"></mat-icon>
-                  <mat-icon *ngIf="retroLogo == 0 && product_type == 'SCALE' || product_type == 'SCALE_ENTERPRISE'" svgIcon="truenas_scale_logotype" id="{{product_model}}"></mat-icon>
                 </ng-template>
             </div>
 
@@ -47,32 +39,14 @@
                 <img *ngIf="product_image; else generic" [src]="'assets/images/' + product_image" id="{{product_model}}">
                   <ng-template #generic>
                     <!--<mat-icon *ngIf="product_type === 'CORE' && !certified" class="generic" svgIcon="freenas_logomark"></mat-icon>-->
-                    <mat-icon *ngIf="retroLogo == 1 && !isPassive" class="generic" svgIcon="freenas_logomark"></mat-icon>
-                    <mat-icon *ngIf="product_type === 'CORE' && !certified && retroLogo == 0" class="generic" svgIcon="truenas_core_logomark"></mat-icon>
-                    <mat-icon *ngIf="product_type === 'CORE' && certified && retroLogo == 0" class="generic certified" svgIcon="freenas_certified"></mat-icon>
-                    <mat-icon *ngIf="ready && !isPassive && product_type === 'ENTERPRISE' && !certified && retroLogo == 0" class="generic" svgIcon="truenas_enterprise_logomark"></mat-icon>
-                    <mat-icon *ngIf="(product_type === 'SCALE' || product_type == 'SCALE_ENTERPRISE') && !certified && retroLogo == 0 && !isHA" class="generic" svgIcon="truenas_scale_logomark"></mat-icon>
-                    <mat-icon *ngIf="(product_type === 'SCALE' || product_type == 'SCALE_ENTERPRISE') && certified && retroLogo == 0 && !isHA" class="generic" svgIcon="freenas_certified"></mat-icon>
                   </ng-template>
                   <div class="generic alert" *ngIf="!product_image && isPassive && ha_status !== 'HA Enabled'">
-                    <mat-icon role="img" fontSet="mdi-set" fontIcon="mdi-alert"></mat-icon>
                   </div>
                   <div *ngIf="product_image && isHA" class="ha-node-status">({{ isPassive ? "Standby" : "Active" | translate }})</div>
                   <div *ngIf="ready && !product_image && product_type == 'ENTERPRISE' " class="ha-node-status">(Unsupported Hardware)</div>
               </div>
             </div>
 
-            <div *ngIf="isUpdateRunning; else noUpdateRunning">
-                <p id="update-in-progress" class="">{{'UPDATE IN PROGRESS' | translate}}</p>
-            </div>
-
-            <ng-template #noUpdateRunning>
-              <div fxHide.xs fxFlex="18" class="update-action">
-                <button *ngIf="!isPassive" class="" mat-button color="{{updateBtnStatus}}" (click)="router.navigate(['system','update'])"
-                  ix-auto ix-auto-type="button" ix-auto-identifier="{{updateBtnLabel | uppercase}}">{{updateBtnLabel | translate}}</button>
-                <simple-failover-button *ngIf="isPassive" [disabled]="!ha_status || ha_status !== 'HA Enabled'" ></simple-failover-button>
-              </div>
-            </ng-template>
           </div>
 
           <!-- Details Section -->
@@ -92,30 +66,10 @@
 
               <mat-list>
                 <mat-list-item><strong>{{'Platform' | translate}}:</strong> &nbsp;&nbsp;{{data.system_product && manufacturer == 'ixsystems' ? data.system_product : 'Generic'}}</mat-list-item>
-                <mat-list-item>
-                  <strong>{{"Version" | translate}}:</strong> 
-                  &nbsp;&nbsp;
-                  <div>
-                    <span textLimiter 
-                      [popup]="false" 
-                      threshold="28">
-                      {{data.version}}
-                    </span>
-                    <copy-btn [text]="data.version"></copy-btn>
-                  </div>
-                </mat-list-item>
-
-                <mat-list-item *ngIf="data.license">
-                  <strong>{{'License' | translate}}:</strong> &nbsp;&nbsp;
-                  <span style="text-transform:capitalize">{{data.license.contract_type.toLowerCase()}}</span> &nbsp;contract, &nbsp;
-                  expires {{data.license.contract_end.$value}}
-                </mat-list-item>
 
                 <mat-list-item  *ngIf="data.system_serial && manufacturer == 'ixsystems' ">
                   <span><strong>{{"Serial Number" | translate}}:</strong>&nbsp;&nbsp;{{ data.system_serial}}</span>
                 </mat-list-item>
-
-                <mat-list-item><strong>{{"HostName" | translate}}:</strong> &nbsp;&nbsp;{{data.hostname}}</mat-list-item>
                 <mat-list-item *ngIf="uptimeString"><strong>{{"Uptime" | translate}}:</strong> &nbsp;&nbsp;{{uptimeString}} as of {{ dateTime }}                </mat-list-item>
 
               </mat-list>

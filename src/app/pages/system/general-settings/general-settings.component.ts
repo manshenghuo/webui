@@ -170,7 +170,6 @@ export class GeneralSettingsComponent implements OnInit, OnDestroy {
           title: helptext.guiTitle,
           id: 'gui',
           items: [
-            {label: helptext.stg_guicertificate.placeholder, value: res.ui_certificate.name},
             {label: helptext.stg_guiaddress.placeholder, value: res.ui_address.join(', ')},
             {label: helptext.stg_guiv6address.placeholder, value: res.ui_v6address.join(', ')},
             {label: helptext.stg_guihttpsport.placeholder, value: res.ui_httpsport},

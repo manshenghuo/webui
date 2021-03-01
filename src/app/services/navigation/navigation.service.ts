@@ -136,7 +136,6 @@ export class NavigationService {
       icon: 'settings',
       state: 'system',
       sub: [
-        { name: T('Update'), state: 'update' },
         { name: T('General'), state: 'general' },
         { name: T('Advanced'), state: 'advanced' },
         { name: T('Boot'), state: 'boot' },

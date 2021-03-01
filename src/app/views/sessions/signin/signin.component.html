@@ -6,10 +6,9 @@
         <div [hidden]="!(connected() && logo_ready)">
           <div class="text-center logo-wrapper" *ngIf="logo_ready">
             <img class="logo-bg" alt="Logo image background of stars and sky at night" src="assets/images/stars-sky-1200w.jpg" srcset="assets/images/stars-sky-400w.jpg, assets/images/stars-sky-800w.jpg 2x, assets/images/stars-sky-1200w.jpg 3x">
-            <mat-icon svgIcon="truenas_core_logo_full" *ngIf="product_type === 'CORE'; else isTruenas" class="logo" alt="TrueNAS CORE logo"></mat-icon>
+            <img class="logo" src="assets/images/ztlogo.png">
             <ng-template #isTruenas>
-              <mat-icon *ngIf="product_type === 'ENTERPRISE'" class="logo" svgIcon="truenas_enterprise_logo_full" alt="TrueNAS ENTERPRISE logo"></mat-icon>
-              <mat-icon *ngIf="product_type === 'SCALE' || product_type == 'SCALE_ENTERPRISE'" class="logo" svgIcon="truenas_scale_logo_full" alt="TrueNAS SCALE logo"></mat-icon>
+              <img class="logo" src="assets/images/ztlogo.png">
             </ng-template>
           </div>
 
@@ -123,23 +122,16 @@
                 <img id="truecommand-logo" src="assets/images/truecommand/truecommand-logo-mark-full-color-rgb.svg">
                 <span class="truecommand-txt">TrueCommand IP: {{tc_ip}}</span>
             </div>
-  
-            <div class="copyright-line">
-              <span  class="copyright-txt">TrueNAS {{product_type}} ® © {{copyrightYear}} </span>
-              <img id="full-logo" (click)="openIX()" src="assets/images/ix_logo_full.png">
-            </div>
+
           </div>
         </div>
         <div [hidden]="connected() && logo_ready">
           <div class="disconnected" *ngIf="product">
             <div class="fake-icon">?</div>
             <p *ngIf="!ha_status">
-              {{"Connecting to " | translate}} {{product}}
-              {{"... Make sure the " | translate}} {{product}}
+              {{"Connecting to " | translate}} nas
+              {{"... Make sure the " | translate}}
               {{" system is powered on and connected to the network." | translate}}
-            </p>
-            <p *ngIf="ha_status">
-              {{"Waiting for Active TrueNAS controller to come up..." | translate}}
             </p>
           </div>
         </div>

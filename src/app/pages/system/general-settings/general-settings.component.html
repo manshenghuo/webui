@@ -8,13 +8,6 @@
   gdAreas.lt-lg="system-card system-card | data-card1 data-card2 | ntp-card ntp-card"
   gdAreas.lt-md="system-card | data-card1 | data-card2 | ntp-card">
 
-    <mat-card class="system-card" gdArea="system-card">
-        <mat-toolbar-row class="title-bar">
-            <h3>{{ supportTitle | translate }}</h3>
-        </mat-toolbar-row>
-        
-        <app-support></app-support>
-    </mat-card>
 
     <mat-card class="data-card{{i+1}}" gdArea="data-card{{i+1}}" *ngFor="let card of dataCards; index as i; ">
         <mat-toolbar-row>
