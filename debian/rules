@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-PRODUCT=	TrueNAS
+PRODUCT=	NAS
 FILETIME!=	stat -c %y .
 
 clean:
